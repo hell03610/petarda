@@ -6,20 +6,18 @@ App.SketchSettings = {
 App.Sketch = function($p) {
 
     var w = 600,
-        h = 400,
-        timer = 100.0;
+        h = 400;
 
     var system;
+    var maxNumberOfParticles = 1000;
 
     function setup() {
         $p.size(w, h);
         $p.strokeWeight(2);
 
-        var origin = new App.Point();
-        origin.x = w / 2.0;
-        origin.y = h / 2.0;
         system = new App.ParticleSystem();
-        system.init(10, origin);
+        var center = new App.Point(w/2.0, h/2.0);
+        system.init(10, center);
        
     }
 
@@ -32,8 +30,14 @@ App.Sketch = function($p) {
     function run() {
         initBackground();
         system.run($p);
+        if(system.size() < maxNumberOfParticles){
+            system.addParticle();
+        }
     }
     
     $p.setup = setup;
     $p.draw = run;
+    $p.mousePressed = function(){
+        system.init(10,new App.Point($p.mouseX,$p.mouseY));
+    }
 };
