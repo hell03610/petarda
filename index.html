@@ -2,48 +2,118 @@
 <html> 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Petarda</title>
     <script src="js/processing-1.4.1.js"></script>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.2.1/pure-min.css">
+
     <style type="text/css">
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 16px;
-        line-height: 1.8;
-        margin: 0;
-        padding: 0;
-    }
-    #container {
-        width: 1000px;
-        margin: 0 auto;
-        color: #aaa;
-    }
-    .header {
-        font-weight: bold;
-        font-size: 40px;
-    }
+     
+        #container {
+            width: 70%;
+            margin: 0 auto;
+            color: #aaa;
+        }
+        .header {
+            font-weight: bold;
+            font-size: 40px;
+        }
+
+        .pure-button-success{
+            color: white;
+            border-radius: 4px;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .pure-button-success {
+            background: rgb(28, 184, 65); /* this is a green */
+        }
 
 
     </style>
 </head>
 <body>
-    <div id="container">
-    <span class="header">Petarda Project</span> by Emma López
-    <canvas id="board"></canvas>
-    <p>Particles in system: <span id="numberOfParticles"></span></p>
-    </div>
-
-    <script>
-    var App = {};
-    </script>
-    <script src="js/App.Sketch.js"></script>
-    <script src="js/App.Point.js"></script>
-    <script src="js/App.Particle.js"></script>
-    <script src="js/App.ParticleSystem.js"></script>
-    <script src="js/App.Helper.js"></script>
-    <script>
-        var canvas = document.getElementById("board");
-        animation = new Processing(canvas, App.Sketch);
+    <div id="container" class="pure-g-r">
         
-    </script>
+
+        <div class="pure-u-1">
+            <h1>Petarda Project</h1>
+            <canvas id="board"></canvas>
+            <p>Particles in system: <span id="numberOfParticles"></span></p>
+
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <legend>Quick Modes</legend>
+                    <a class="pure-button pure-button-success" href="#" id="explosion">Explosion</a>
+                    <a class="pure-button pure-button-success" href="#" id="fountain">Fountain</a>
+                    <a class="pure-button pure-button-success" href="#" id="comet">Comet</a>
+                    <a class="pure-button pure-button-success" href="#" id="confetti">Confetti</a>
+                </fieldset>
+            </form>
+
+            <form class="pure-form pure-form-stacked">
+                <fieldset>
+                    <legend>Advanced Options</legend>
+
+                    <div class="pure-g-r">
+                       <div class="pure-u-1-3">
+                        <label for="minX">Min X</label>
+                        <input id="minX" type="number" placeholder="Min X">
+                    </div>
+                    <div class="pure-u-1-3">
+                        <label for="maxX">Max X</label>
+                        <input id="maxX" type="number" placeholder="Max X">
+                    </div>
+
+
+                    <div class="pure-u-1-3">
+                        <label for="randomColors" class="pure-checkbox">
+                            <input id="randomColors" type="checkbox"> Use random colors
+                        </label>
+
+                    </div>
+
+
+                    <div class="pure-u-1-3">
+                        <label for="minY">Min Y</label>
+                        <input id="minY" type="number" placeholder="Min Y">
+                    </div>
+                    <div class="pure-u-1-3">
+                        <label for="maxY">Max Y</label>
+                        <input id="maxY" type="number" placeholder="Max Y">
+                    </div>                
+                    <div class="pure-u-1-3">
+                        <label for="option-one" class="pure-radio">
+                            <input id="option-one" type="radio" name="gravity" value="light">Use lightweight gravity
+                        </label>
+                        <label for="option-two" class="pure-radio">
+                            <input id="option-two" type="radio" name="gravity" value="light">Use medium gravity
+                        </label>
+                        <label for="option-three" class="pure-radio">
+                            <input id="option-three" type="radio" name="gravity" value="light">Use heavy gravity
+                        </label>
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </form>
+        
+    </div>
+</div>
+
+<script>
+    var App = {};
+</script>
+<script src="js/App.Sketch.js"></script>
+<script src="js/App.Point.js"></script>
+<script src="js/App.Particle.js"></script>
+<script src="js/App.ParticleSystem.js"></script>
+<script src="js/App.Helper.js"></script>
+<script>
+    var canvas = document.getElementById("board");
+    animation = new Processing(canvas, App.Sketch);
+
+</script>
 </body>
 </html>
