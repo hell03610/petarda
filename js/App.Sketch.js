@@ -16,7 +16,9 @@ App.Sketch = function($p) {
         $p.frameRate(100);
 
         system = new App.ParticleSystem();
+        system.setConfettiMode();
         system.setMediumDensity();
+        updateValueControlsFromSystem();
         refreshSystem();
        
     }
@@ -42,42 +44,32 @@ App.Sketch = function($p) {
    
 
     document.getElementById('comet').addEventListener('click', function(){
-        setValue('minX', 3);
-        setValue('maxX', 6);
-        setValue('minY', -1);
-        setValue('maxY', 1);
+        system.setCometMode();
+        updateValueControlsFromSystem();
         refreshSystem();
     });
 
      document.getElementById('manneken').addEventListener('click', function(){
-        setValue('minX', -1);
-        setValue('maxX', -1);
-        setValue('minY', -1);
-        setValue('maxY', -1);
+        system.setMannekenMode();
+        updateValueControlsFromSystem();
         refreshSystem();
     });
 
     document.getElementById('fountain').addEventListener('click', function(){
-        setValue('minX', -1);
-        setValue('maxX', 1);
-        setValue('minY', -4);
-        setValue('maxY', 0);
+        system.setFountainMode();
+        updateValueControlsFromSystem();
         refreshSystem();
     });
 
     document.getElementById('confetti').addEventListener('click', function(){
-        setValue('minX', -4);
-        setValue('maxX', 4);
-        setValue('minY', -4);
-        setValue('maxY', 4);
+        system.setConfettiMode();
+        updateValueControlsFromSystem();
         refreshSystem();
     });
 
     document.getElementById('left').addEventListener('click', function(){
-        setValue('minX', -4);
-        setValue('maxX', 0);
-        setValue('minY', -4);
-        setValue('maxY', 0);
+        system.setThrowLeftMode();
+        updateValueControlsFromSystem();
         refreshSystem();
     });
 
@@ -85,24 +77,33 @@ App.Sketch = function($p) {
         refreshSystem();
     });
 
-    var refreshSystem = function(){
-        var minX = parseInt(document.getElementById('minX').value || -4);
-        var maxX = parseInt(document.getElementById('maxX').value || 4);
-        var minY = parseInt(document.getElementById('minY').value || -4);
-        var maxY = parseInt(document.getElementById('maxY').value || 4);
-        
-        system.changeSpeedXRange(minX,maxX);
-        system.changeSpeedYRange(minY,maxY);
+    var updateValueControlsFromSystem = function(){
+        setValue('minX', system.minX);
+        setValue('maxX', system.maxX);
+        setValue('minY', system.minY);
+        setValue('maxY', system.maxY);
+    }
+
+    var refreshSystem = function(){        
+        system.changeSpeedXRange(getValue('minX'),getValue('maxX'));
+        system.changeSpeedYRange(getValue('minY'),getValue('maxY'));
         
         if(document.getElementById('option-one').checked) system.setLightDensity();
         if(document.getElementById('option-two').checked) system.setMediumDensity();
         if(document.getElementById('option-three').checked) system.setHighDensity();
 
-        var center = new App.Point(w/2.0, h/2.0);
-        system.init(10, center);
+        system.init(10, getCentralPoint());
     }
 
-     var setValue = function(fieldId, value){
+    var setValue = function(fieldId, value){
         document.getElementById(fieldId).value = value;
+    }
+
+    var getValue = function(fieldId){
+        return parseInt(document.getElementById(fieldId).value || 0);
+    }
+
+    var getCentralPoint = function(){
+        return new App.Point(w / 2.0, h / 2.0);
     }
 };
