@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="utf-8">
+    <title>Petarda</title>
+    <script src="js/processing-1.4.1.js"></script>
+</head>
+<body>
+    <h1>Petarda Project</h1>
+    <canvas id="stage"></canvas>
+
+    <script>
+    function sketchProc($p) {
+        // Override draw function, by default it will be called 60 times per second
+        $p.setup = function(){
+            $p.size(300, 300);
+            $p.strokeWeight(2);
+        }
+        $p.draw = function() {
+            // Fill canvas grey
+            $p.background( 100 );
+            // Set fill-color to blue
+            $p.fill( 0, 121, 184 );
+            // Set stroke-color white
+            $p.stroke(255); 
+            // Draw circle
+            $p.ellipse( 150, 150, 100, 100 ); 
+        };
+    }
+
+    var canvas = document.getElementById("stage");
+    var processingInstance = new Processing(canvas, sketchProc);
+    </script>
+</body>
+</html>
