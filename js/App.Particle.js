@@ -36,7 +36,7 @@ App.Particle.prototype.setPosition = function(point){
 
 App.Particle.prototype.isDead = function(){
 	//return this.lifeSpan < 0.0;
-	var isOut = this.position.x < 0 || this.position.x > 640 || this.position.y < 0 || this.position.y > 400;
+	var isOut = this.position.x < 0 || this.position.x > 900 || this.position.y < 0 || this.position.y > 400;
 	return isOut;
 	//return false;
 }

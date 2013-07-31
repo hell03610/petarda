@@ -5,7 +5,7 @@ App.SketchSettings = {
 
 App.Sketch = function($p) {
 
-    var w = 600,
+    var w = 900,
         h = 400;
 
     var system;

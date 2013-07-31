@@ -4,11 +4,33 @@
     <meta charset="utf-8">
     <title>Petarda</title>
     <script src="js/processing-1.4.1.js"></script>
+    <style type="text/css">
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+        line-height: 1.8;
+        margin: 0;
+        padding: 0;
+    }
+    #container {
+        width: 1000px;
+        margin: 0 auto;
+        color: #aaa;
+    }
+    .header {
+        font-weight: bold;
+        font-size: 40px;
+    }
+
+
+    </style>
 </head>
 <body>
-    <h1>Petarda Project</h1>
-    <p>Particles in system: <span id="numberOfParticles"></span></p>
+    <div id="container">
+    <span class="header">Petarda Project</span> by Emma López
     <canvas id="board"></canvas>
+    <p>Particles in system: <span id="numberOfParticles"></span></p>
+    </div>
 
     <script>
     var App = {};
