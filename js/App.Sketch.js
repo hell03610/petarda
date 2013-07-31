@@ -1,5 +1,5 @@
 App.SketchSettings = {
-    backgroundColor: 0xFFF0F0D8,
+    backgroundColor: 0xFF080808,
     strokeColor: 0xFF604848
 }
 
@@ -7,12 +7,20 @@ App.Sketch = function($p) {
 
     var w = 600,
         h = 400;
-    var particle;
+    var particle,
+        system;
 
     function setup() {
         $p.size(w, h);
         $p.strokeWeight(2);
-        particle = Object.create(App.Particle);
+        particle = new App.Particle();
+
+        var origin = new App.Point();
+        origin.x = 50;
+        origin.y = 50;
+        system = new App.ParticleSystem();
+        system.init(10, origin);
+       
     }
 
     function initBackground(){
@@ -24,6 +32,7 @@ App.Sketch = function($p) {
     function draw() {
         initBackground();
         particle.draw($p);
+        system.draw($p);
     }
     
     $p.setup = setup;
