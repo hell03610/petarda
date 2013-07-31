@@ -12,14 +12,10 @@ App.ParticleSystem.prototype.init = function(numberOfParticles, suggestedOrigin)
 		}
 };
 
-App.ParticleSystem.prototype.draw = function($p){
-		for(var i=0; i<this.particles.length; i++){
-			this.particles[i].draw($p);
-		}
-};
-
-App.ParticleSystem.prototype.update = function($p){
-		for(var i=0; i<this.particles.length; i++){
-			this.particles[i].update();
-		}
-};
+App.ParticleSystem.prototype.run = function($p){
+	for(var i = this.particles.length -1; i>=0; i--){
+		this.particles[i].draw($p);
+		this.particles[i].update();
+		if(this.particles[i].isDead()) this.particles.removeAt(i);
+	}
+}

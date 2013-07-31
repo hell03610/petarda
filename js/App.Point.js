@@ -1,7 +1,7 @@
-App.Point = function(){
-	this.x = 0;
-	this.y = 0;
-	this.z =0;
+App.Point = function(x,y,z){
+	this.x = x || 0;
+	this.y = y || 0;
+	this.z = z || 0;
 }
 App.Point.prototype.add = function(point){
 		this.x += point.x;

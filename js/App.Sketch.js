@@ -6,18 +6,18 @@ App.SketchSettings = {
 App.Sketch = function($p) {
 
     var w = 600,
-        h = 400;
-    var particle,
-        system;
+        h = 400,
+        timer = 100.0;
+
+    var system;
 
     function setup() {
         $p.size(w, h);
         $p.strokeWeight(2);
-        particle = new App.Particle();
 
         var origin = new App.Point();
-        origin.x = 50;
-        origin.y = 50;
+        origin.x = w / 2.0;
+        origin.y = h / 2.0;
         system = new App.ParticleSystem();
         system.init(10, origin);
        
@@ -29,13 +29,11 @@ App.Sketch = function($p) {
     }
 
   
-    function draw() {
+    function run() {
         initBackground();
-        particle.draw($p);
-        system.update();
-        system.draw($p);
+        system.run($p);
     }
     
     $p.setup = setup;
-    $p.draw = draw;
+    $p.draw = run;
 };
