@@ -32,6 +32,7 @@ App.Sketch = function($p) {
     function draw() {
         initBackground();
         particle.draw($p);
+        system.update();
         system.draw($p);
     }
     

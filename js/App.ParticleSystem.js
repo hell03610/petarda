@@ -17,3 +17,9 @@ App.ParticleSystem.prototype.draw = function($p){
 			this.particles[i].draw($p);
 		}
 };
+
+App.ParticleSystem.prototype.update = function($p){
+		for(var i=0; i<this.particles.length; i++){
+			this.particles[i].update();
+		}
+};
