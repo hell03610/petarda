@@ -7,29 +7,17 @@
 </head>
 <body>
     <h1>Petarda Project</h1>
-    <canvas id="stage"></canvas>
+    <canvas id="board"></canvas>
 
     <script>
-    function sketchProc($p) {
-        // Override draw function, by default it will be called 60 times per second
-        $p.setup = function(){
-            $p.size(300, 300);
-            $p.strokeWeight(2);
-        }
-        $p.draw = function() {
-            // Fill canvas grey
-            $p.background( 100 );
-            // Set fill-color to blue
-            $p.fill( 0, 121, 184 );
-            // Set stroke-color white
-            $p.stroke(255); 
-            // Draw circle
-            $p.ellipse( 150, 150, 100, 100 ); 
-        };
-    }
-
-    var canvas = document.getElementById("stage");
-    var processingInstance = new Processing(canvas, sketchProc);
+    var App = {};
+    </script>
+    <script src="js/App.Sketch.js"></script>
+    <script src="js/App.Point.js"></script>
+    <script src="js/App.Particle.js"></script>
+    <script>
+        var canvas = document.getElementById("board");
+        animation = new Processing(canvas, App.Sketch);
     </script>
 </body>
 </html>
