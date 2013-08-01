@@ -3,7 +3,7 @@ var App = {};
 App.SketchSettings = {
     backgroundColor: 0xFF080808,
     strokeColor: 0xFF604848
-}
+};
 
 App.Sketch = function($p) {
 
@@ -12,7 +12,7 @@ App.Sketch = function($p) {
 
     var system;
     
-    function setup() {
+    $p.setup = function() {
         $p.size(w, h);
         $p.strokeWeight(2);
         $p.frameRate(100);
@@ -21,8 +21,7 @@ App.Sketch = function($p) {
         system.setConfettiMode();
         system.setMediumDensity();
         updateValueControlsFromSystem();
-        refreshSystem();
-       
+        refreshSystem();   
     }
 
     function initBackground(){
@@ -31,19 +30,15 @@ App.Sketch = function($p) {
     }
 
   
-    function run() {
+    $p.draw = function() {
         initBackground();
         system.run($p);
         system.addParticle();
     }
     
-    $p.setup = setup;
-    $p.draw = run;
     $p.mousePressed = function(){
         system.init(10,new App.Point($p.mouseX,$p.mouseY));
     }
-
-   
 
     document.getElementById('comet').addEventListener('click', function(){
         system.setCometMode();
@@ -108,4 +103,5 @@ App.Sketch = function($p) {
     var getCentralPoint = function(){
         return new App.Point(w / 2.0, h / 2.0);
     }
+
 };
