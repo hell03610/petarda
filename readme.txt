@@ -16,10 +16,11 @@ Considerations
 Futher work
 ---------------------------
 	- Resolve Firefox ui issues
-	- Jslint & minifie the code with Grunt or similar
+	- JsHint & minifie the code with Grunt[3]
 	- Change speed ui inputs for sliders or similar 
 
 Links
 ---------------------------
 [1] http://processingjs.org/
 [2] http://purecss.io/
+[3] http://gruntjs.com/
