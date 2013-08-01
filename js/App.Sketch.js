@@ -1,3 +1,5 @@
+var App = {};
+
 App.SketchSettings = {
     backgroundColor: 0xFF080808,
     strokeColor: 0xFF604848
