@@ -26,7 +26,7 @@ App.ParticleSystem = function(){
 				this.particles.splice(i,1);
 			}
 		}
-		this.numberOfParticles.innerText = this.particles.length;
+		this.numberOfParticles.textContent = this.particles.length;
 	};
 
 	this.addParticle = function(suggestedOrigin){
